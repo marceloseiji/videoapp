@@ -4,7 +4,7 @@ const router = express.Router();
 const GalleryModel = require('../models/GalleryModel');
 const ResponseClass = require('../models/ResponseClass');
 
-let publicFolder = '/public/files/';
+let publicFolder = './public/files/';
 
 let multer = require('multer');
 let path = require('path');
@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     let fileName = `${file.fieldname.replace(/\//g, '')}-${Date.now()}${path.extname(file.originalname)}`;
-    req.body.video_path = publicFolder + fileName;
+    req.body.video_path = publicFolder.replace(/^\./g, '') + fileName;
     cb(null, fileName);
   }
 })
