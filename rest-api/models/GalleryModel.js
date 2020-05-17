@@ -9,4 +9,9 @@ module.exports = class GalleryModel {
   static getId(id, callback) {
     return db.query("select * from videos where video_id = ?", [id], callback);
   }
+
+  static addVideo(data, callback) {
+    return db.query("insert into videoapp (video_title, video_path) values(?, ?)",
+    [data.video_title, data.video_path], callback);
+  }
 }

@@ -4,6 +4,8 @@ const router = express.Router();
 const GalleryModel = require('../models/GalleryModel');
 const ResponseClass = require('../models/ResponseClass');
 
+let publicFolder = './public/files';
+
 router.get('/', function(req, resp, next) {
   GalleryModel.getAll(function(error, returnData){
     let response = new ResponseClass();
