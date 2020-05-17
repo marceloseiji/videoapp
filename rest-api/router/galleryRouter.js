@@ -19,4 +19,19 @@ router.get('/', function(req, resp, next) {
   })
 });
 
+router.get('/:id?', function(req, resp, next) {
+  GalleryModel.getId(req.params.id, function(error, returnData){
+    let response = new ResponseClass();
+
+    if(error) {
+      response.erro = true;
+      response.msg = "Oops some error here..." + error.message;
+      console.log("error: ", error.message);
+    } else {
+      response.data = returnData;
+    }
+    resp.json(response);
+  })
+});
+
 module.exports = router;
