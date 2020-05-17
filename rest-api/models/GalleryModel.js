@@ -11,7 +11,7 @@ module.exports = class GalleryModel {
   }
 
   static addVideo(data, callback) {
-    return db.query("insert into videoapp (video_title, video_path) values(?, ?)",
+    return db.query("insert into videos (video_title, video_path) values(?, ?)",
     [data.video_title, data.video_path], callback);
   }
 }
