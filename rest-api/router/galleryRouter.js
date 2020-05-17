@@ -33,9 +33,7 @@ function deleteFile(path) {
 router.post('/', upload.single('video_path'), function(req, resp, next) {
   let response = new ResponseClass();
 
-  
-
-  if(req.body.video_title != null) {
+  if(req.file != null) {
 
     GalleryModel.addVideo(req.body, function(error, returnData){
       let response = new ResponseClass();
