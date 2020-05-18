@@ -16,12 +16,11 @@ module.exports = class GalleryModel {
   }
 
   static edit(data, callback) {
-
     if(data.video_path != null) {
-      return db.query("update videos set (video_title = ?, video_path = ?) where video_id = ?",
+      return db.query("update videos set video_title = ?, video_path = ? where video_id = ?",
       [data.video_title, data.video_path, data.video_id], callback);
     } else {
-      return db.query("update videos set (video_title = ?) where video_id = ?",
+      return db.query("update videos set video_title = ? where video_id = ?",
       [data.video_title, data.video_id], callback);
     }
   }

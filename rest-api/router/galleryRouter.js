@@ -73,7 +73,7 @@ router.put('/', upload.single('video_path'), function(req, resp, next) {
 
     if(error) {
       response.erro = true;
-      response.msg = "Oops some error here...";
+      response.msg = "Oops some error trying to edit...";
       console.log("error: ", error.message);
       deleteFile(req.body.path);
     } else {
