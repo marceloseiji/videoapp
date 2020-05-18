@@ -116,7 +116,29 @@ router.get('/:id?', function(req, resp, next) {
       response.msg = "Oops some error here..." + error.message;
       console.log("error: ", error.message);
     } else {
+      response.msg  = "Encontrado..."
       response.data = returnData;
+    }
+    resp.json(response);
+  })
+});
+
+router.delete('/:id?', function(req, resp, next) {
+  GalleryModel.delete(req.params.id, function(error, returnData){
+    let response = new ResponseClass();
+
+    if(error) {
+      response.erro = true;
+      response.msg = "Oops can't delete..." + error.message;
+    } else {
+      if(returnData.affectedRows > 0) {
+        response.msg = "Excluído com sucesso";
+      } else {
+        response.erro = true;
+        response.msg = "Não foi possível excluir";
+        console.log("error: ", error.message);
+        deleteFile(req.body.path);
+      }
     }
     resp.json(response);
   })

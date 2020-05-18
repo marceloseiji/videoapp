@@ -24,5 +24,8 @@ module.exports = class GalleryModel {
       [data.video_title, data.video_id], callback);
     }
   }
-}
 
+  static delete(id, callback) {
+    return db.query("delete from videos where video_id = ?", [id], callback);
+  }
+}
