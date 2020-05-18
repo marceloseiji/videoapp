@@ -49,11 +49,11 @@ router.post('/', upload.single('video_path'), function(req, resp, next) {
           console.log('req:', req.body.path);
         } else {
           response.erro = true;
-          response.msg = "Não foi possível realizar a operação";
+          response.msg = "Não foi possível realizar o cadastro";
           console.log("error: ", error.message);
+          deleteFile(req.body.path);
         }
       }
-      console.log('response: ', response);
       resp.json(response);
     })
 
@@ -63,6 +63,33 @@ router.post('/', upload.single('video_path'), function(req, resp, next) {
     console.log("error: ");
     resp.json(response);
   }
+});
+
+router.put('/', upload.single('video_path'), function(req, resp, next) {
+  let response = new ResponseClass();
+
+  GalleryModel.edit(req.body, function(error, returnData){
+  let response = new ResponseClass();
+
+    if(error) {
+      response.erro = true;
+      response.msg = "Oops some error here...";
+      console.log("error: ", error.message);
+      deleteFile(req.body.path);
+    } else {
+      if(returnData.affectedRows > 0) {
+        response.msg = "Editado com sucesso";
+        console.log('req:', req.body.path);
+      } else {
+        response.erro = true;
+        response.msg = "Não foi possível editar";
+        console.log("error: ", error.message);
+        deleteFile(req.body.path);
+      }
+    }
+    resp.json(response);
+  })
+
 });
 
 router.get('/', function(req, resp, next) {
