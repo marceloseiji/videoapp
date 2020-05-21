@@ -1,42 +1,36 @@
 <template>
   <div id="app">
-    <div>
-      <router-view></router-view>
-    </div>
-
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Carousel</a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <router-link class="navbar-brand" to="home">Navbar</router-link>
         <button
           class="navbar-toggler"
           type="button"
           data-toggle="collapse"
-          data-target="#navbarCollapse"
-          aria-controls="navbarCollapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">
+              <router-link class="nav-link" to="home">
                 Home
                 <span class="sr-only">(current)</span>
-              </a>
+              </router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              <router-link class="nav-link" to='gallery'>Video Gallery</router-link>
             </li>
           </ul>
-          <form class="form-inline mt-2 mt-md-0">
+          <form class="form-inline my-2 my-lg-0">
             <input
               class="form-control mr-sm-2"
-              type="text"
+              type="search"
               placeholder="Search"
               aria-label="Search"
             />
@@ -45,29 +39,19 @@
         </div>
       </nav>
     </header>
+    <div class="container main-content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
-<script>
-  import Gallery from "./components/gallery/Gallery";
-  import Home from "./components/home/Home";
+<style lang="scss">
+  @import "../src/assets/css/style.css";
+</style>
 
+<script>
   export default {
     name: "app",
-    components: {
-      Gallery,
-      Home
-    }
+    components: {}
   };
 </script>
-
-<style>
-  #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
-</style>
