@@ -5,6 +5,13 @@ import VueRouter from 'vue-router'
 import Gallery from './components/gallery/Gallery';
 import Home from './components/home/Home';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import GalleryService from './services/GalleryService';
+import ConfigClass from './classes/configClass';
+
+let server = `${ConfigClass.getUrlApi().toString()}/gallery/`;
+
+Vue.prototype.$galleryService = GalleryService;
+Vue.prototype.$server = server;
 
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
