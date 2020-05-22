@@ -7,9 +7,9 @@ import Home from './components/home/Home';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import GalleryService from './services/GalleryService';
-import ConfigClass from './classes/configClass';
+import { ConfigClass } from './classes/configClass';
 
-let server = `${ConfigClass.getUrlApi().toString()}/gallery/`;
+let server = `${ConfigClass.getUrlApi().toString()}`;
 
 Vue.prototype.$galleryService = GalleryService;
 Vue.prototype.$server = server;
