@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import Gallery from './components/gallery/Gallery';
 import Home from './components/home/Home';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import GalleryService from './services/GalleryService';
 import ConfigClass from './classes/configClass';
 
