@@ -8,13 +8,22 @@ export default class GalleryService {
     })
   }
 
+  static getId(id) {
+    return fetch(`${path}/${id}`).then(response => {
+      return response.json();
+    })
+  }
+
   static addVideo(formData) {
-    return fetch(path, 
-        {
-          method: 'POST',
-          body: formData
-        }
-      ).then(response => {
+    return fetch(path, {method: 'POST', body: formData})
+    .then(response => {
+      return response.json();
+    })
+  }
+
+  static saveEdit(formData) {
+    return fetch(path, {method: 'PUT', body: formData})
+    .then(response => {
       return response.json();
     })
   }

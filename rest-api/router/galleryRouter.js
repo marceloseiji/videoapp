@@ -58,9 +58,9 @@ router.post('/', upload.single('video_path'), function(req, resp, next) {
     })
 
   } else {
-    response.erro = true;
-    response.msg = "File not sended";
-    console.log("error: ");
+    response.error = true;
+    response.msg = "Add some video...";
+    console.log("error:", response.msg);
     resp.json(response);
   }
 });
