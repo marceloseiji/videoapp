@@ -37,7 +37,14 @@
                     Editar
                   </button>
                 </td>
-                <td>Excluir</td>
+                <td>
+                  <button class="btn btn-danger"
+                  id="btn-edit"
+                  v-on:click="delRegister(item.video_id)"
+                  >
+                    Excluir
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -186,10 +193,8 @@
         }
         
         if(this.register.id_gallery_video > 0) {
-          alert("Atualizado")
           this.saveEdit(this.registerformData);
         } else {
-          alert("Salvo")
           this.registerVideo(this.registerformData);
         }
       },
@@ -252,6 +257,18 @@
           }
         }).catch(response => {
           this.showAlert("Erro ao salvar a edição", "error");
+        })
+      },
+      delRegister(id) {
+        this.$galleryService.delRegister(id).then(response => {
+          if(!response.error) {
+            this.dataList();
+            this.showAlert("Excluido..", "success");
+          } else {
+            this.showAlert("Erro ao excluir" + response.msg, "error");
+          }
+        }).catch(response => {
+          this.showAlert("Erro ao excluir", "error");
         })
       }
     },

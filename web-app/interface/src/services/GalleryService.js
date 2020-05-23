@@ -27,4 +27,11 @@ export default class GalleryService {
       return response.json();
     })
   }
+
+  static delRegister(id) {
+    return fetch(`${path}/${id}`, {method: 'DELETE'})
+    .then(response => {
+      return response.json();
+    })
+  }
 }
