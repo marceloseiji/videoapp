@@ -34,7 +34,7 @@
                   id="btn-edit"
                   v-on:click="edit(item.video_id)"
                   >
-                    Editar
+                    <i class="fas fa-edit"></i> Editar
                   </button>
                 </td>
                 <td>
@@ -42,7 +42,7 @@
                   id="btn-edit"
                   v-on:click="delRegister(item.video_id)"
                   >
-                    Excluir
+                    <i class="fas fa-trash-alt"></i> Excluir
                   </button>
                 </td>
               </tr>
@@ -96,14 +96,16 @@
         </div>
 
         <div class="form-inline">
-          <button id="btn-register" type="submit" class="btn-show-form btn btn-primary">Salvar</button>
+          <button id="btn-register" type="submit" class="btn-show-form btn btn-primary">
+          <i class="fas fa-save"></i> Salvar
+          </button>
           <button
           id="btn-cancel"
           type="button"
           class="btn-show-form btn btn-warning"
           v-on:click="cancelOperation()"
           >
-            Cancelar
+          <i class="fas fa-window-close"></i> Cancelar
           </button>
         </div>
       </form>
